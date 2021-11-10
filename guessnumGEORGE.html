@@ -4,31 +4,22 @@
         
         
         <script>
-            var rounds = 0;
-     var roundswon = 0;   
-    
-    var guessnum = 6;
+     var rounds = 0;
+     var roundsWon = 0;   
+     var guessnum = 6;
+     var ran = Math.round(Math.random() * 50) + 1;
      
-        
-            function displayGuess()
-            {
-                var guess = document.getElementById("idTxtGuess").value
-                
-    
+ function displayGuess()
+ {
+     var guess = document.getElementById("idTxtGuess").value
      
-
-    ran = genNum()
-    console.log(ran)
-
-
-
-
-
+     console.log(ran)
+    
      if (guess == ran) { 
          alert("Congratulations you have gotten the answer correcto! Correct: " + ran) 
          roundsWon++;
-         genNum()
-         idDivNumRoundsWon.innerHTML = roundswon;
+         Math.round(Math.random() * 50) + 1;
+         idDivNumRoundsWon.innerHTML = roundsWon;
 
     } 
 
@@ -44,10 +35,11 @@
    idDivOutput.innerHTML = guessnum
          }
     
-       else if(guessnum <= 0){
+       else i
+       if(guessnum == 0){
              alert("You are out of guesses!")
              guessnum == 6
-             genNum();
+             Math.round(Math.random() * 50) + 1;
              rounds++;
              idDivNumRounds.innerHTML = rounds;
 
@@ -56,22 +48,35 @@
 
 function genNum() {
   return Math.round(Math.random() * 50) + 1;
+  ran = genNum()
 }
             
             
-
+        //No location reload!
             function restartGame()
             {
-                if(confirm('Are you sure you want to restart?')){
-                window.location.reload();  
+                //reset global variables
+                 rounds = 0;
+                 roundsWon = 0;   
+                 guessnum = 6;
+                 //make var
+                 numCompWon = 0;
+
+
+                 //update divs
+                 idDivOutput.innerHTML = f
+
+
+
+                 //gen new secret num
                 }
-            }
+            
            
             
             
             </script>
     
-    <body onLoad = "genNum()">
+    <body>
         
       
         
@@ -90,13 +95,16 @@ function genNum() {
         <br><br>
         <br><br>
         Num of Guesses:
-        <div id="idDivOutput">
+        <div id="idDivOutput"></div>
             <br><br>
         Num of Rounds Played:
-     <div id="idDivNumRounds">
+     <div id="idDivNumRounds"></div>
              <br><br>
         Num of Rounds Won:
-    <div id="idDivNumRoundsWon">
+    <div id="idDivNumRoundsWon"></div>
+    <br><br>
+    Num of Comp Rounds Won:
+    <div id="idDivComp"></div>
 
         <h1>Instructions</h1>
         <h2>To play this game, you must guess a number between 1 and 50. When you guess, we will tell you if you got it right or if it was too high or low. Guessing the right number will add to your score, while pressing the "restart" button will reset the page</h2>
