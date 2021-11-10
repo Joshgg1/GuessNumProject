@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>Hello</title>
+        
+        
+        <script>
+            var rounds = 0;
+     var roundswon = 0;   
+    
+    var guessnum = 6;
+     
+        
+            function displayGuess()
+            {
+                var guess = document.getElementById("idTxtGuess").value
+                
+    
+     
+
+    ran = genNum()
+    console.log(ran)
+
+
+
+
+
+     if (guess == ran) { 
+         alert("Congratulations you have gotten the answer correcto! Correct: " + ran) 
+         roundsWon++;
+         genNum()
+         idDivNumRoundsWon.innerHTML = roundswon;
+
+    } 
+
+        else if (guess > ran) { 
+    alert("Less")  
+    guessnum--;
+    idDivOutput.innerHTML = guessnum
+        } 
+
+    else if (guess < ran) { 
+   alert("More")
+   guessnum--;
+   idDivOutput.innerHTML = guessnum
+         }
+    
+       else if(guessnum <= 0){
+             alert("You are out of guesses!")
+             guessnum == 6
+             genNum();
+             rounds++;
+             idDivNumRounds.innerHTML = rounds;
+
+         }
+}
+
+function genNum() {
+  return Math.round(Math.random() * 50) + 1;
+}
+            
+            
+
+            function restartGame()
+            {
+                if(confirm('Are you sure you want to restart?')){
+                window.location.reload();  
+                }
+            }
+           
+            
+            
+            </script>
+    
+    <body onLoad = "genNum()">
+        
+      
+        
+        
+        
+        
+        
+       <center>
+            Enter your guess here!
+        <input type = "text" id="idTxtGuess">
+        <br><br>
+        
+        <input type = "button" value="Enter" id="idTxtBtn1" onclick="displayGuess()">
+        <br><br>
+        <input type = "submit" value="Restart" id="idTxtBtn2" onclick="restartGame()">
+        <br><br>
+        <br><br>
+        Num of Guesses:
+        <div id="idDivOutput">
+            <br><br>
+        Num of Rounds Played:
+     <div id="idDivNumRounds">
+             <br><br>
+        Num of Rounds Won:
+    <div id="idDivNumRoundsWon">
+
+        <h1>Instructions</h1>
+        <h2>To play this game, you must guess a number between 1 and 50. When you guess, we will tell you if you got it right or if it was too high or low. Guessing the right number will add to your score, while pressing the "restart" button will reset the page</h2>
+            <br><br>
+        </center>
+
+        
+
+
+
+        
+         
+    </body>
+</html>
