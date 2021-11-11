@@ -1,13 +1,18 @@
 <html>
     <head>
         <title>Hello</title>
-        
+        <!--Grabbed this from the coding idea thing on schoology-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel = "stylesheet" type = "text/css" href = "guessnum.css">
+
         
         <script>
      var rounds = 0;
      var roundsWon = 0;   
      var guessnum = 6;
      var ran = Math.round(Math.random() * 50) + 1;
+     var CompRoundsWon = 0
      
  function displayGuess()
  {
@@ -18,7 +23,8 @@
      if (guess == ran) { 
          alert("Congratulations you have gotten the answer correcto! Correct: " + ran) 
          roundsWon++;
-         Math.round(Math.random() * 50) + 1;
+         ran2 = Math.round(Math.random() * 50) + 1;
+         console.log(ran2)
          idDivNumRoundsWon.innerHTML = roundsWon;
 
     } 
@@ -36,12 +42,15 @@
          }
     
        else i
-       if(guessnum == 0){
+       if(guessnum < 1){
              alert("You are out of guesses!")
-             guessnum == 6
-             Math.round(Math.random() * 50) + 1;
+             guessnum = 6
+             ran3 = Math.round(Math.random() * 50) + 1;
+             console.log(ran3)
              rounds++;
              idDivNumRounds.innerHTML = rounds;
+             CompRoundsWon++;
+             idDivComp.innerHTML = CompRoundsWon;
 
          }
 }
@@ -64,19 +73,30 @@ function genNum() {
 
 
                  //update divs
-                 idDivOutput.innerHTML = f
+                 idDivOutput.innerHTML = 6
+                 idDivNumRounds = 0
+                 idDivComp = 0
+                 idDivNumRoundsWon = 0
 
 
 
                  //gen new secret num
+                 ran4 = Math.round(Math.random() * 50) + 1;
+                 console.log(ran4)
                 }
+
+    function displayInst()
+    {
+        swal("Instructions:", "To play this game, you must guess a number between 1 and 50. When you guess, we will tell you if you got it right or if it was too high or low. Guessing the right number will add to your score, while pressing the restart button will reset the page ");
+       
+    }
             
            
             
             
             </script>
     
-    <body>
+    <body onload="displayInst()">
         
       
         
@@ -106,9 +126,7 @@ function genNum() {
     Num of Comp Rounds Won:
     <div id="idDivComp"></div>
 
-        <h1>Instructions</h1>
-        <h2>To play this game, you must guess a number between 1 and 50. When you guess, we will tell you if you got it right or if it was too high or low. Guessing the right number will add to your score, while pressing the "restart" button will reset the page</h2>
-            <br><br>
+        
         </center>
 
         
