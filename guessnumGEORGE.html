@@ -1,31 +1,35 @@
 <html>
+
     <head>
         <title>Hello</title>
         <!--Grabbed this from the coding idea thing on schoology-->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
         <link rel = "stylesheet" type = "text/css" href = "guessnum.css">
 
         
         <script>
+       //IMPORTANT: I reccomend loading this page through Internet Explorer and pressing enable scripts ;)     
      var rounds = 0;
      var roundsWon = 0;   
      var guessnum = 6;
-     var ran = Math.round(Math.random() * 50) + 1;
      var CompRoundsWon = 0
      
  function displayGuess()
  {
      var guess = document.getElementById("idTxtGuess").value
-     
+     ran = Math.round(Math.random() * 50) + 1;
      console.log(ran)
     
      if (guess == ran) { 
-         alert("Congratulations you have gotten the answer correcto! Correct: " + ran) 
+         alert("Congratulations you have gotten the answer correcto! Correct: " + ran  + "! A new round will start!") 
          roundsWon++;
-         ran2 = Math.round(Math.random() * 50) + 1;
-         console.log(ran2)
+        
          idDivNumRoundsWon.innerHTML = roundsWon;
+         guessnum = 6;
+         idDivOutput.innerHTML = guessnum
+         rounds++;
+         idDivNumRounds.innerHTML = rounds
 
     } 
 
@@ -40,26 +44,55 @@
    guessnum--;
    idDivOutput.innerHTML = guessnum
          }
-    
+    //This is an else if for when the user runs out of guesses
+    //for some reason, when I remove the "i" my entire code stops working :/ ...
        else i
        if(guessnum < 1){
-             alert("You are out of guesses!")
-             guessnum = 6
-             ran3 = Math.round(Math.random() * 50) + 1;
-             console.log(ran3)
+             swal("You are out of guesses! A new round will start! The number was " + ran)
+             
+             
              rounds++;
              idDivNumRounds.innerHTML = rounds;
              CompRoundsWon++;
              idDivComp.innerHTML = CompRoundsWon;
+             guessnum = 6
+             idDivOutput.innerHTML = guessnum
+       }
+             
+       
+        else 
+        if(roundsWon >= 6){
+             swal("You WON THE GAME!!!")
+             guessnum = 6
+             rounds = 0;
+             roundsWon = 0
+             CompRoundsWon = 0
+            
+            idDivOutput.innerHTML = guessnum
+            idDivNumRounds.innerHTML = rounds
+            idDivComp.innerHTML = CompRoundsWon
+            idDivNumRoundsWon.innerHTML = roundsWon
+
+           
+             
 
          }
+         else 
+        if(CompRoundsWon >= 6){
+             swal("You LOST THE GAME!!!")
+             guessnum = 6
+             rounds = 0;
+             roundsWon = 0
+             CompRoundsWon = 0
+            
+            idDivOutput.innerHTML = guessnum
+            idDivNumRounds.innerHTML = rounds
+            idDivComp.innerHTML = CompRoundsWon
+            idDivNumRoundsWon.innerHTML = roundsWon
+        }
 }
 
-function genNum() {
-  return Math.round(Math.random() * 50) + 1;
-  ran = genNum()
-}
-            
+           
             
         //No location reload!
             function restartGame()
@@ -69,25 +102,23 @@ function genNum() {
                  roundsWon = 0;   
                  guessnum = 6;
                  //make var
-                 numCompWon = 0;
+                 CompRoundsWon = 0;
 
 
                  //update divs
                  idDivOutput.innerHTML = 6
-                 idDivNumRounds = 0
-                 idDivComp = 0
-                 idDivNumRoundsWon = 0
+                 idDivNumRounds.innerHTML = 0
+                 idDivComp.innerHTML = 0
+                 idDivNumRoundsWon.innerHTML = 0
 
 
 
-                 //gen new secret num
-                 ran4 = Math.round(Math.random() * 50) + 1;
-                 console.log(ran4)
+                 
                 }
 
     function displayInst()
     {
-        swal("Instructions:", "To play this game, you must guess a number between 1 and 50. When you guess, we will tell you if you got it right or if it was too high or low. Guessing the right number will add to your score, while pressing the restart button will reset the page ");
+        swal("Instructions:", "To play this game, you must guess a number between 1 and 50. When you guess, we will tell you if you got it right or if it was too high or low. Guessing the right number will add to your score, while pressing the restart button will reset the page. Every time you run out of guesses, the computer gains a win. However, when you gain 6 wins you win! The first to get to 6 wins WINS! IMPORTANT: I reccomend loading this page through Internet Explorer and pressing enable scripts ;)  ");
        
     }
             
@@ -125,6 +156,27 @@ function genNum() {
     <br><br>
     Num of Comp Rounds Won:
     <div id="idDivComp"></div>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+    
+    <audio autoplay>
+        <source src="DVRST - Close Eyes (Lyrics) _ megamind meme song name.mp3" type="audio/mpeg">
+      </audio>
+
 
         
         </center>
